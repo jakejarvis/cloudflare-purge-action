@@ -1,7 +1,7 @@
 FROM alpine:3.10
 
 LABEL "com.github.actions.name"="Purge Cloudflare Cache"
-LABEL "com.github.actions.description"=""
+LABEL "com.github.actions.description"="Purge a zone's cache via the Cloudflare API"
 LABEL "com.github.actions.icon"="trash-2"
 LABEL "com.github.actions.color"="orange"
 
