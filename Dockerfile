@@ -10,5 +10,7 @@ LABEL "repository"="https://github.com/jakejarvis/cloudflare-purge-action"
 LABEL "homepage"="https://jarv.is/"
 LABEL "maintainer"="Jake Jarvis <jake@jarv.is>"
 
+RUN apk update && apk add openssl curl
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
