@@ -37,7 +37,7 @@ All variables should be added as "secrets" in the action's configuration.
 
 | Key | Value | Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
-| `CLOUDFLARE_ZONE` | The name of your DNS zone, usually just your domain name. For example, `example.com`. | `secret` | **Yes** |
+| `CLOUDFLARE_ZONE` | The Zone ID of your domain, which can be found in the right sidebar of your domain's overview page on the Cloudflare dashboard. For example, `xyz321xyz321xyz321xyz321xyz321xy`. | `secret` | **Yes** |
 | `CLOUDFLARE_EMAIL` | The email address you registered your Cloudflare account with. For example, `me@example.com`. | `secret` | **Yes** |
 | `CLOUDFLARE_KEY` | Your Cloudflare API key, which can be generated using [these instructions](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-). For example, `abc123abc123abc123abc123abc123abc123abc123abc`. | `secret` | **Yes** |
 
