@@ -19,6 +19,7 @@ on: push
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     steps:
 
     # Put steps here to build your site, deploy it to a service, etc.
@@ -26,10 +27,17 @@ jobs:
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
       env:
-        - CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        - CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-        - CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+        CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+        CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
 ```
+
+If successful, you'll see the following message returned in your action's logs:
+
+```
+{"result":{"id":"***"},"success":true,"errors":[],"messages":[]}
+```
+
 
 ### Required Secret Variables
 
