@@ -13,7 +13,7 @@ As of now, this action will purge your *entire* zone — in the near future, you
 
 Place in a `.yml` file such as this one in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 
-```
+```yaml
 name: Deploy my website
 on: push
 
