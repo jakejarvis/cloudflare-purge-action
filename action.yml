@@ -1,0 +1,9 @@
+name: "Cloudflare Purge Cache"
+description: "Purge a zone's cache via the Cloudflare API"
+author: jakejarvis
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  color: orange
+  icon: trash-2

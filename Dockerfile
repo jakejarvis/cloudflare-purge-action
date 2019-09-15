@@ -1,11 +1,11 @@
 FROM alpine:latest
 
-LABEL "com.github.actions.name"="Purge Cloudflare Cache"
+LABEL "com.github.actions.name"="Cloudflare Purge Cache"
 LABEL "com.github.actions.description"="Purge a zone's cache via the Cloudflare API"
 LABEL "com.github.actions.icon"="trash-2"
 LABEL "com.github.actions.color"="orange"
 
-LABEL version="0.2.0"
+LABEL version="0.1.3"
 LABEL repository="https://github.com/jakejarvis/cloudflare-purge-action"
 LABEL homepage="https://jarv.is/"
 LABEL maintainer="Jake Jarvis <jake@jarv.is>"
