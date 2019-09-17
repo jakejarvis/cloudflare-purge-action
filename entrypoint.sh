@@ -17,6 +17,13 @@ if [ -z "$CLOUDFLARE_KEY" ]; then
   exit 1
 fi
 
+# If URL array is passed, only purge those. Otherwise, purge everything.
+if [ -n "$PURGE_URLS" ]; then
+  DATA_ARG='{"files":'"${PURGE_URLS}"'}'
+else
+  DATA_ARG='{"purge_everything":true}'
+fi
+
 # Call the API and store the response for later.
 HTTP_RESPONSE=$(curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
          -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
