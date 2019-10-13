@@ -13,9 +13,9 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 | Key | Value | Suggested Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
-| `CLOUDFLARE_ZONE` | The Zone ID of your domain, which can be found in the right sidebar of your domain's overview page on the Cloudflare dashboard. For example, `xyz321xyz321xyz321xyz321xyz321xy`. | `secret` | **Yes** |
-| `CLOUDFLARE_EMAIL` | The email address you registered your Cloudflare account with. For example, `me@example.com`. | `secret` | **Yes** |
-| `CLOUDFLARE_KEY` | Your Cloudflare API key, which can be generated using [these instructions](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-). For example, `abc123abc123abc123abc123abc123abc123abc123abc`. | `secret` | **Yes** |
+| `cloudflareZone` | The Zone ID of your domain, which can be found in the right sidebar of your domain's overview page on the Cloudflare dashboard. For example, `xyz321xyz321xyz321xyz321xyz321xy`. | `secret` | **Yes** |
+| `cloudflareEmail` | The email address you registered your Cloudflare account with. For example, `me@example.com`. | `secret` | **Yes** |
+| `cloudflareKey` | Your Cloudflare API key, which can be generated using [these instructions](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-). For example, `abc123abc123abc123abc123abc123abc123abc123abc`. | `secret` | **Yes** |
 | `PURGE_URLS` | **Optional.** An array of **fully qualified URLs** to purge. For example: `["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]`. If unset, the action will purge everything (which is [suggested](#purging-specific-files)). | `env` | No |
 
 ### `workflow.yml` Example
