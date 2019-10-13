@@ -35,10 +35,10 @@ jobs:
 
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
-      env:
-        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-        CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+      with:
+        cloudflareZone: ${{ secrets.CLOUDFLARE_ZONE }}
+        cloudflareEmail: ${{ secrets.CLOUDFLARE_EMAIL }}
+        cloudflareKey: ${{ secrets.CLOUDFLARE_KEY }}
 ```
 
 ### Purging specific files
@@ -46,7 +46,8 @@ jobs:
 To purge only specific files, you can pass an array of **fully qualified URLs** via a fourth environment variable named `PURGE_URLS`. Unfortunately, Cloudflare doesn't support wildcards (unless you're on the insanely expensive Enterprise plan) so in order to purge a folder, you'd need to list every file in that folder. It's probably safer to leave this out and purge everything, but in case you want really to, the syntax is as follows:
 
 ```yaml
-PURGE_URLS: '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'
+env:
+  PURGE_URLS: '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'
 ```
 
 
