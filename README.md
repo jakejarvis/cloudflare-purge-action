@@ -13,10 +13,10 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 | Key | Value | Suggested Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
-| `CLOUDFLARE_ZONE` | The Zone ID of your domain, which can be found in the right sidebar of your domain's overview page on the Cloudflare dashboard. For example, `xyz321xyz321xyz321xyz321xyz321xy`. | `secret` | **Yes** |
-| `CLOUDFLARE_EMAIL` | The email address you registered your Cloudflare account with. For example, `me@example.com`. | `secret` | **Yes** |
-| `CLOUDFLARE_KEY` | Your Cloudflare API key, which can be generated using [these instructions](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-). For example, `abc123abc123abc123abc123abc123abc123abc123abc`. | `secret` | **Yes** |
-| `PURGE_URLS` | **Optional.** An array of **fully qualified URLs** to purge. For example: `["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]`. If unset, the action will purge everything (which is [suggested](#purging-specific-files)). | `env` | No |
+| `cloudflareZone` | The Zone ID of your domain, which can be found in the right sidebar of your domain's overview page on the Cloudflare dashboard. For example, `xyz321xyz321xyz321xyz321xyz321xy`. | `secret` | **Yes** |
+| `cloudflareEmail` | The email address you registered your Cloudflare account with. For example, `me@example.com`. | `secret` | **Yes** |
+| `cloudflareKey` | Your Cloudflare API key, which can be generated using [these instructions](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-). For example, `abc123abc123abc123abc123abc123abc123abc123abc`. | `secret` | **Yes** |
+| `purgeURLs` | **Optional.** An array of **fully qualified URLs** to purge. For example: `'["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'`. If unset, the action will purge everything (which is [suggested](#purging-specific-files)). | `option` | No |
 
 ### `workflow.yml` Example
 
@@ -35,10 +35,10 @@ jobs:
 
     - name: Purge cache
       uses: jakejarvis/cloudflare-purge-action@master
-      env:
-        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-        CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+      with:
+        cloudflareZone: ${{ secrets.CLOUDFLARE_ZONE }}
+        cloudflareEmail: ${{ secrets.CLOUDFLARE_EMAIL }}
+        cloudflareKey: ${{ secrets.CLOUDFLARE_KEY }}
 ```
 
 ### Purging specific files
@@ -46,7 +46,7 @@ jobs:
 To purge only specific files, you can pass an array of **fully qualified URLs** via a fourth environment variable named `PURGE_URLS`. Unfortunately, Cloudflare doesn't support wildcards (unless you're on the insanely expensive Enterprise plan) so in order to purge a folder, you'd need to list every file in that folder. It's probably safer to leave this out and purge everything, but in case you want really to, the syntax is as follows:
 
 ```yaml
-PURGE_URLS: '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'
+purgeURLs: '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'
 ```
 
 

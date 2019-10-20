@@ -2,32 +2,32 @@
 
 set -e
 
-if [ -z "$CLOUDFLARE_ZONE" ]; then
-  echo "CLOUDFLARE_ZONE is not set. Quitting."
+if [ -z "$INPUT_CLOUDFLAREZONE" ]; then
+  echo "cloudflareZone is not set. Quitting."
   exit 1
 fi
 
-if [ -z "$CLOUDFLARE_EMAIL" ]; then
-  echo "CLOUDFLARE_EMAIL is not set. Quitting."
+if [ -z "$INPUT_CLOUDFLAREEMAIL" ]; then
+  echo "cloudflareEmail is not set. Quitting."
   exit 1
 fi
 
-if [ -z "$CLOUDFLARE_KEY" ]; then
-  echo "CLOUDFLARE_KEY is not set. Quitting."
+if [ -z "$INPUT_CLOUDFLAREKEY" ]; then
+  echo "cloudflareKey is not set. Quitting."
   exit 1
 fi
 
 # If URL array is passed, only purge those. Otherwise, purge everything.
-if [ -n "$PURGE_URLS" ]; then
-  set -- --data '{"files":'"${PURGE_URLS}"'}'
+if [ -n "$INPUT_PURGEURLS" ]; then
+  set -- --data '{"files":'"${INPUT_PURGEURLS}"'}'
 else
   set -- --data '{"purge_everything":true}'
 fi
 
 # Call the API and store the response for later.
-HTTP_RESPONSE=$(curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
-                     -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
-                     -H "X-Auth-Key: ${CLOUDFLARE_KEY}" \
+HTTP_RESPONSE=$(curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/${INPUT_CLOUDFLAREZONE}/purge_cache" \
+                     -H "X-Auth-Email: ${INPUT_CLOUDFLAREEMAIL}" \
+                     -H "X-Auth-Key: ${INPUT_CLOUDFLAREKEY}" \
                      -H "Content-Type: application/json" \
                      -w "HTTP_STATUS:%{http_code}" \
                      "$@")
