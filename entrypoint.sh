@@ -18,8 +18,8 @@ if [ -z "$INPUT_CLOUDFLAREKEY" ]; then
 fi
 
 # If URL array is passed, only purge those. Otherwise, purge everything.
-if [ -n "$PURGE_URLS" ]; then
-  set -- --data '{"files":'"${PURGE_URLS}"'}'
+if [ -n "$INPUT_PURGEURLS" ]; then
+  set -- --data '{"files":'"${INPUT_PURGEURLS}"'}'
 else
   set -- --data '{"purge_everything":true}'
 fi
