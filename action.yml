@@ -11,6 +11,9 @@ inputs:
   cloudflareKey:
     description: "Your Cloudflare API key."
     required: true
+  purgeURLs:
+    description: "The specific URLs to purge (a STRING in JSON format '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]')"
+    required: false
 runs:
   using: docker
   image: Dockerfile
