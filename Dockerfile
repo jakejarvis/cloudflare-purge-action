@@ -5,7 +5,7 @@ LABEL "com.github.actions.description"="Purge a zone's cache via the Cloudflare 
 LABEL "com.github.actions.icon"="trash-2"
 LABEL "com.github.actions.color"="orange"
 
-LABEL version="0.2.0"
+LABEL version="0.3.0"
 LABEL repository="https://github.com/jakejarvis/cloudflare-purge-action"
 LABEL homepage="https://jarv.is/"
 LABEL maintainer="Jake Jarvis <jake@jarv.is>"
