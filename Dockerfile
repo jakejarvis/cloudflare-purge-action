@@ -1,4 +1,4 @@
-FROM curlimages/curl:7.66.0
+FROM curlimages/curl@sha256:4c7b687d607d7f5f397db1ca877a626fedc79c7a537a3f145482083bd68dc115
 
 LABEL "com.github.actions.name"="Cloudflare Purge Cache"
 LABEL "com.github.actions.description"="Purge a zone's cache via the Cloudflare API"
